@@ -1,7 +1,15 @@
-var app = angular.module('app', ['ui.router']);
+var app = angular.module('app', ['ui.router', 'ngResource']);
 
-app.controller('NowPlayingController', ['$scope', 
-	function($scope) {
-		$scope.channel = 'painuser';
+app.factory('Channels', ['$resource', '$http',
+	function($resource, $http) {
+		return $resource('/channels');
+	}
+]);
+
+var c = app.controller('StreamController', ['$scope', 'Channels',
+	function($scope, Channels) {
+		var channels = Channels.query(function() {
+			$scope.channel = channels[0]['channel'];
+		})
 	}
 ]);

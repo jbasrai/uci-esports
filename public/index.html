@@ -13,17 +13,14 @@
 	<div id="header">
 		<div id="antpic"></div>
 		<div id="splash">eSports @ UCI</div>
-		<div id="options">
-			<div id="activity"></div>
-			<div id="register"></div>
-		</div>
+		<a href="/register" id="register">register your stream!</a>
 	</div>
 
 	<div id="content">
-		<div id="now-playing" ng-controller="NowPlayingController">
+		<div id="now-playing" ng-controller="StreamController">
 			<object type="application/x-shockwave-flash" 
-					height="710"
-					width="1200" 
+					height="540"
+					width="900" 
 			        id="live_embed_player_flash" 
 			        data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{channel}}" 
 			        bgcolor="#222222">
@@ -39,6 +36,7 @@
 			          value="hostname=www.twitch.tv&channel={{channel}}&auto_play=true" />
 			</object>
 		</div>
+		<ul id="stream-list"></ul>
 	</div>
 
 	<div id="footer">
