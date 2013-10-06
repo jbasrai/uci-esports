@@ -4,49 +4,63 @@ body,h1,h2,h3,h4,h5,ul,li,div,p,button {
 	font:inherit;
 }
 
-body {
-	font-family:'Helvetica';
+html {
+	background-color:#333;
 }
 
-#view {
-	width:1000px;
+body {
+	width:1200px;
 	margin-left:auto;
 	margin-right:auto;
-}
 
-.link-button {
-	text-decoration:none;
-	font-size:14px;
-	font-weight:bold;
-	color:#808080;
-}
-
-.link-button:hover {
-	color:#333;
-	text-shadow:1px 1px 1px #eee;
+	background-color:#222222;
 }
 
 /*header*/
 
 #header {
-	height:43px;
-	width:100%;
+	height:180px;
 }
 
-#portal {
-	float:left;
+#antpic {
+	display:inline-block;
+	position:relative;
+	left:0px;
 
-	padding-top:8px;
-	padding-bottom:8px;
-
-	font-family:'Open Sans';
-	font-size:20px;
-	font-weight:300;
+	height:180px;
+	width:350px;
+	background-image: url('http://www.zotcade.icscouncil.com/wp-content/uploads/2013/04/gamer-anteater.png');
 }
 
-#user-nav {
-	float:right;
+#splash {
+	width:500px;
 
-	padding-top:12px;
-	padding-bottom:12px;
+	overflow:hidden;
+	display:inline-block;
+	position:relative;
+
+	margin-bottom:50px;
+
+	text-align:center;
+	font-family:'Cantora One';
+	font-size:72px;
+	color:#FFC30C;
+	
+}
+
+#options {
+	display:inline-block;
+	position:relative;
+
+	height:180px;
+	width:350px;
+}
+
+/*footer*/
+
+#footer {
+	margin-top:30px;
+	text-align:center;
+	color:#222222;
+	font-size:14px;
 }
