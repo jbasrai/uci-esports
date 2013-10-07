@@ -50,8 +50,9 @@ get '/token' do
 		puts "INSERTING INTO DATABASE"
 		DB['channels'].insert("channel" => username)
 	end
-
+	
 	http.shutdown
+	redirect '/'
 end
 
 get '/channels' do

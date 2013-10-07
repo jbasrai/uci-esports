@@ -2,6 +2,9 @@
 
 <head>
 
+	<link href='http://fonts.googleapis.com/css?family=News+Cycle' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Andika' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Walter+Turncoat' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Cantora+One' rel='stylesheet' type='text/css'>
 
@@ -27,7 +30,7 @@
 				<param name="flashvars" value="hostname=www.twitch.tv&amp;channel={{channel}}&amp;auto_play=true">
 			</object>
 		</div>
-		<ul id="stream-list">
+	<ul id="stream-list">
 			<li class="stream-item" ng-repeat="channel in channels" ng-click="chooseChannel(channel['channel'])">
 				<img src="{{getGameIcon(channel['stream']['game'])}}" class="game-icon">
 				<span class="streamer-name">{{channel['channel']}}</span>

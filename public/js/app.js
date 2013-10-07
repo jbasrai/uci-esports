@@ -8,8 +8,8 @@ app.factory('Channels', ['$resource', '$http',
 
 var c = app.controller('StreamController', ['$scope', '$q', 'Channels',
 	function($scope, $q, Channels) {
-		
-		function getChannels() {
+
+		$scope.channels = function() {
 			var channels = $q.defer();
 
 			var response = Channels.query(function() {
@@ -17,12 +17,18 @@ var c = app.controller('StreamController', ['$scope', '$q', 'Channels',
 			});
 
 			return channels.promise;
-		};
+		}();
 
-		function chooseRandomChannel() {
-			var rand = parseInt(Math.random() * $scope.channels.length);
-			$scope.channel = $scope.channels[rand]['channel'];
-		};
+		$scope.channel = function() {
+			var channel = $q.defer();
+
+			$scope.channels.then(function(channels) {
+				var rand = parseInt(Math.random() * channels.length);
+				channel.resolve(channels[rand]['channel']);
+			});
+
+			return channel.promise;
+		}();
 
 		$scope.chooseChannel = function(channel) {
 			$scope.channel = channel;
@@ -38,15 +44,5 @@ var c = app.controller('StreamController', ['$scope', '$q', 'Channels',
 					return "/assets/lol.png";
 			}
 		}
-
-		function init() {
-			getChannels().then(function(channels) {
-				console.log(channels);
-				$scope.channels = channels;
-				chooseRandomChannel();
-			});
-		};
-		
-		init();
 	}
 ]);
