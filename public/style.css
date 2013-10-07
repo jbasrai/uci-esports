@@ -27,9 +27,7 @@ body {
 }
 
 #antpic {
-	display:inline-block;
-	position:relative;
-	left:0px;
+	float:left;
 
 	height:180px;
 	width:350px;
@@ -37,12 +35,12 @@ body {
 }
 
 #splash {
+	float:left;
 	width:500px;
 
 	overflow:hidden;
-	display:inline-block;
 
-	margin-bottom:50px;
+	margin-top:50px;
 
 	text-align:center;
 	font-family:'Cantora One';
