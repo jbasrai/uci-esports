@@ -17,7 +17,7 @@ enable :sessions
 DB = Mongo::MongoClient.from_uri('mongodb://gamer:zotzot@ds049288.mongolab.com:49288/uci-esports').db('uci-esports')
 
 get '/register' do
-	redirect 'https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=naswzupwph8vbzwgka4vqrcmbmjs7fu&redirect_uri=http://localhost:4567/token&scope=user_read'
+	redirect 'https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=naswzupwph8vbzwgka4vqrcmbmjs7fu&redirect_uri=http://uci-esports.herokuapp.com/token&scope=user_read'
 end
 
 get '/token' do
@@ -29,7 +29,7 @@ get '/token' do
 		"client_id" => "naswzupwph8vbzwgka4vqrcmbmjs7fu", 
 		"client_secret" => "j67d3ma5tqxg22w2xwg2rrld4wmn221",
 		"grant_type" => "authorization_code",
-		"redirect_uri" => "http://localhost:4567/token",
+		"redirect_uri" => "http://uci-esports.herokuapp.com/token",
 		"code" => params["code"]
 	}
 	post = Net::HTTP::Post.new post_uri.path
