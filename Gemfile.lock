@@ -1,8 +1,28 @@
-source "https://rubygems.org"
-ruby '1.9.3'
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bcrypt-ruby (3.1.2-x86-mingw32)
+    bson (1.9.2)
+    bson_ext (1.9.2)
+      bson (~> 1.9.2)
+    mongo (1.9.2)
+      bson (~> 1.9.2)
+    net-http-persistent (2.9)
+    rack (1.5.2)
+    rack-protection (1.5.0)
+      rack
+    sinatra (1.4.3)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    tilt (1.4.1)
 
-gem 'sinatra'
-gem 'mongo'
-gem 'bson_ext'
-gem 'bcrypt-ruby'
-gem 'net-http-persistent'
+PLATFORMS
+  x86-mingw32
+
+DEPENDENCIES
+  bcrypt-ruby
+  bson_ext
+  mongo
+  net-http-persistent
+  sinatra
