@@ -19,26 +19,20 @@
 
 	<div id="content" ng-controller="StreamController">
 		<div id="now-playing">
-			<object id="stream-object" type="application/x-shockwave-flash" 
-					height="540"
-					width="900" 
-			        id="live_embed_player_flash" 
-			        data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{channel}}" 
-			        bgcolor="#222222">
-			  <param  name="allowFullScreen" 
-			          value="true" />
-			  <param  name="allowScriptAccess" 
-			          value="always" />
-			  <param  name="allowNetworking" 
-			          value="all" />
-			  <param  name="movie" 
-			          value="http://www.twitch.tv/widgets/live_embed_player.swf" />
-			  <param  name="flashvars" 
-			          value="hostname=www.twitch.tv&channel={{channel}}&auto_play=true" />
+			<object type="application/x-shockwave-flash" height="540" width="900" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{channel}}" bgcolor="#000000">
+				<param name="allowFullScreen" value="true">
+				<param name="allowScriptAccess" value="always">
+				<param name="allowNetworking" value="all">
+				<param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf">
+				<param name="flashvars" value="hostname=www.twitch.tv&amp;channel={{channel}}&amp;auto_play=true">
 			</object>
 		</div>
 		<ul id="stream-list">
-			<li ng-repeat="channel in channels" ng-click="chooseChannel(channel['channel'])">{{channel["channel"]}}</li>
+			<li class="stream-item" ng-repeat="channel in channels" ng-click="chooseChannel(channel['channel'])">
+				<img src="{{getGameIcon(channel['stream']['game'])}}" class="game-icon">
+				<span class="streamer-name">{{channel['channel']}}</span>
+				<span class="viewer-count">{{channel['stream']['viewers']}}</span>
+			</li>
 		</ul>
 	</div>
 

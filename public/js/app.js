@@ -25,12 +25,23 @@ var c = app.controller('StreamController', ['$scope', '$q', 'Channels',
 		};
 
 		$scope.chooseChannel = function(channel) {
-			console.log('choose');
 			$scope.channel = channel;
 		};
 
+		$scope.getGameIcon = function(game) {
+			switch (game) {
+				case "StarCraft II: Heart of the Swarm":
+					return "/assets/sc2.png";
+				case "Dota 2":
+					return "/assets/dota2.png";
+				case "League of Legends":
+					return "/assets/lol.png";
+			}
+		}
+
 		function init() {
 			getChannels().then(function(channels) {
+				console.log(channels);
 				$scope.channels = channels;
 				chooseRandomChannel();
 			});

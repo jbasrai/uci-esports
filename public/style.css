@@ -90,11 +90,38 @@ body {
 }
 
 #stream-list {
+	float:right;
 	overflow:hidden;
 	display:inline-block;
 
 	height:540px;
+	width:292px;
+
 	font-family:'Roboto Slab';
+	font-size:20px;
+	line-height:2;
+}
+
+.stream-item:hover {
+	cursor:pointer;
+	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgb(51, 51, 51)), to(rgb(35, 35, 35)));;
+}
+
+.game-icon {
+	height:50px;
+}
+
+.streamer-name {
+	position:relative;
+	top:-17px;
+}
+
+.viewer-count {
+	float:right;
+	position:relative;
+	bottom:-12px;
+
+	font-size:14px;
 }
 
 /*footer*/
