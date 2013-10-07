@@ -89,11 +89,12 @@ body {
 	width:900px;
 }
 
-#nav {
+#stream-list {
 	overflow:hidden;
 	display:inline-block;
 
 	height:540px;
+	font-family:'Roboto Slab';
 }
 
 /*footer*/

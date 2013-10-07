@@ -2,6 +2,7 @@
 
 <head>
 
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Cantora+One' rel='stylesheet' type='text/css'>
 
 	<link rel='stylesheet' href='/style.css'>
@@ -18,7 +19,7 @@
 
 	<div id="content" ng-controller="StreamController">
 		<div id="now-playing">
-			<object type="application/x-shockwave-flash" 
+			<object id="stream-object" type="application/x-shockwave-flash" 
 					height="540"
 					width="900" 
 			        id="live_embed_player_flash" 
@@ -36,7 +37,9 @@
 			          value="hostname=www.twitch.tv&channel={{channel}}&auto_play=true" />
 			</object>
 		</div>
-		<ul id="stream-list"></ul>
+		<ul id="stream-list">
+			<li ng-repeat="channel in channels" ng-click="chooseChannel(channel['channel'])">{{channel["channel"]}}</li>
+		</ul>
 	</div>
 
 	<div id="footer">

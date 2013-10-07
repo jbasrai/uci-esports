@@ -9,23 +9,33 @@ app.factory('Channels', ['$resource', '$http',
 var c = app.controller('StreamController', ['$scope', '$q', 'Channels',
 	function($scope, $q, Channels) {
 		
-		function getActiveChannels() {
-			var activeChannels = $q.defer();
+		function getChannels() {
+			var channels = $q.defer();
 
-			var channels = Channels.query(function() {
-				activeChannels.resolve(channels);
+			var response = Channels.query(function() {
+				channels.resolve(response);
 			});
 
-			return activeChannels.promise;
+			return channels.promise;
 		};
 
 		function chooseRandomChannel() {
-			getActiveChannels().then(function(activeChannels) {
-				var rand = parseInt(Math.random() * activeChannels.length);
-				$scope.channel = activeChannels[rand]['channel'];
-			})
+			var rand = parseInt(Math.random() * $scope.channels.length);
+			$scope.channel = $scope.channels[rand]['channel'];
+		};
+
+		$scope.chooseChannel = function(channel) {
+			console.log('choose');
+			$scope.channel = channel;
+		};
+
+		function init() {
+			getChannels().then(function(channels) {
+				$scope.channels = channels;
+				chooseRandomChannel();
+			});
 		};
 		
-		chooseRandomChannel();
+		init();
 	}
 ]);
