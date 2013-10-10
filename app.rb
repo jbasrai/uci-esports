@@ -56,6 +56,7 @@ get '/token' do
 end
 
 get '/channels' do
+	start = Time.now
 	results = DB['channels'].find.to_a
 
 	channels = []
@@ -70,6 +71,7 @@ get '/channels' do
 		end
 	end
 	http.shutdown
+	puts "Time elapsed #{Time.now - start} seconds"
 	channels.to_json
 end
 

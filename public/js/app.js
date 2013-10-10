@@ -31,7 +31,10 @@ var c = app.controller('StreamController', ['$scope', '$q', 'Channels',
 		}();
 
 		$scope.chooseChannel = function(channel) {
-			$scope.channel = channel;
+			document.getElementById('now-playing').setAttribute('data',
+				'http://www.twitch.tv/widgets/live_embed_player.swf?channel='+channel);
+			document.getElementById('flashvars').setAttribute('value', 
+			'hostname=www.twitch.tv&amp;channel='+channel+'&amp;auto_play=true');	
 		};
 
 		$scope.getGameIcon = function(game) {
