@@ -24,28 +24,25 @@ var c = app.controller('StreamController', ['$scope', '$q', 'Channels',
 
 			$scope.channels.then(function(channels) {
 				var rand = parseInt(Math.random() * channels.length);
-				channel.resolve(channels[rand]['channel']);
+				channel.resolve(channels[rand]);
 			});
 
 			return channel.promise;
 		}();
 
 		$scope.chooseChannel = function(channel) {
-			document.getElementById('now-playing').setAttribute('data',
-				'http://www.twitch.tv/widgets/live_embed_player.swf?channel='+channel);
-			document.getElementById('flashvars').setAttribute('value', 
-			'hostname=www.twitch.tv&amp;channel='+channel+'&amp;auto_play=true');	
+			$scope.channel = channel;
 		};
 
 		$scope.getGameIcon = function(game) {
 			switch (game) {
 				case "StarCraft II: Heart of the Swarm":
-					return "/assets/sc2.png";
+					return "assets/sc2.png";
 				case "Dota 2":
-					return "/assets/dota2.png";
+					return "assets/dota2.png";
 				case "League of Legends":
-					return "/assets/lol.png";
+					return "assets/lol.png";
 			}
-		}
+		};
 	}
 ]);
