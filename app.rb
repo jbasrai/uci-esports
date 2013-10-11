@@ -11,7 +11,6 @@ require 'openssl'
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 #temporary fix
 
-
 enable :sessions
 
 DB = Mongo::MongoClient.from_uri('mongodb://gamer:zotzot@ds049288.mongolab.com:49288/uci-esports').db('uci-esports')
