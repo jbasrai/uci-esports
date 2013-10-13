@@ -88,6 +88,8 @@ body {
 
 #now-playing {
 	float:left;
+
+	width:900px;
 }
 
 #stream-list {

@@ -6,8 +6,20 @@ app.factory('Channels', ['$resource', '$http',
 	}
 ]);
 
-var c = app.controller('StreamController', ['$scope', '$q', 'Channels',
+app.directive('ngStream', function() {
+	return {
+		restrict: 'E',
+		templateUrl: '/views/stream.html',
+	}
+});
+
+app.controller('StreamController', ['$scope', '$q', 'Channels',
 	function($scope, $q, Channels) {
+
+		$scope.chooseChannel = function(channel) {
+			$scope.channel = channel;
+			angular.element( document.querySelector( '#now-playing' ) ).html('<ng-stream>');
+		};
 
 		$scope.channels = function() {
 			var channels = $q.defer();
@@ -20,27 +32,12 @@ var c = app.controller('StreamController', ['$scope', '$q', 'Channels',
 		}();
 
 		$scope.channel = function() {
-			var channel = $q.defer();
-
 			$scope.channels.then(function(channels) {
 				var rand = parseInt(Math.random() * channels.length);
-				channel.resolve(channels[rand]);
+				var channel = channels[rand];
+				$scope.channel = channel;
 			});
-
-			return channel.promise;
 		}();
-
-		$scope.chooseChannel = function(channel) {
-			//$scope.channel = channel;
-			console.log('choose'); 
-			angular.element( document.querySelector( '#now-playing-container' ) ).html('<object id="now-playing" type="application/x-shockwave-flash" height="540" width="900" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=' + channel['stream']['channel']['name'] + '" bgcolor="#000000">\
-			<param name="allowFullScreen" value="true"> \
-			<param name="allowScriptAccess" value="always"> \
-			<param name="allowNetworking" value="all"> \
-			<param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"> \
-			<param id="flashvars" name="flashvars" value="hostname=www.twitch.tv&amp;channel=' + channel['stream']['channel']['name'] + '&amp;auto_play=true"> \
-			</object>');
-		};
 
 		$scope.getGameIcon = function(game) {
 			switch (game) {
