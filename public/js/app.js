@@ -31,7 +31,15 @@ var c = app.controller('StreamController', ['$scope', '$q', 'Channels',
 		}();
 
 		$scope.chooseChannel = function(channel) {
-			$scope.channel = channel;
+			//$scope.channel = channel;
+			console.log('choose'); 
+			angular.element( document.querySelector( '#now-playing-container' ) ).html('<object id="now-playing" type="application/x-shockwave-flash" height="540" width="900" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=' + channel['stream']['channel']['name'] + '" bgcolor="#000000">\
+			<param name="allowFullScreen" value="true"> \
+			<param name="allowScriptAccess" value="always"> \
+			<param name="allowNetworking" value="all"> \
+			<param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"> \
+			<param id="flashvars" name="flashvars" value="hostname=www.twitch.tv&amp;channel=' + channel['stream']['channel']['name'] + '&amp;auto_play=true"> \
+			</object>');
 		};
 
 		$scope.getGameIcon = function(game) {
