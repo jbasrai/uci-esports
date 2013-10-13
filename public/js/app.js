@@ -18,7 +18,15 @@ app.controller('StreamController', ['$scope', '$q', 'Channels',
 
 		$scope.chooseChannel = function(channel) {
 			$scope.channel = channel;
-			angular.element( document.querySelector( '#now-playing' ) ).html('<ng-stream>');
+			angular.element( document.querySelector( '#now-playing' ) ).html('\
+				<object type="application/x-shockwave-flash" height="540" width="900" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=' + channel['stream']['channel']['name'] + '" bgcolor="#000000">\
+					<param name="allowFullScreen" value="true">\
+					<param name="allowScriptAccess" value="always">\
+					<param name="allowNetworking" value="all">\
+					<param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf">\
+					<param id="flashvars" name="flashvars" value="hostname=www.twitch.tv&amp;channel=' + channel['stream']['channel']['name'] + '&amp;auto_play=true">\
+				</object>'
+			);
 		};
 
 		$scope.channels = function() {
