@@ -61,6 +61,8 @@ app.controller('StreamController', ['$scope', '$q', 'Channels',
 					return "assets/dota2.png";
 				case "League of Legends":
 					return "assets/lol.png";
+				default:
+					return "assets/default.png";
 			}
 		};
 	}
