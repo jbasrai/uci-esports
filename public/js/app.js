@@ -17,7 +17,6 @@ app.controller('StreamController', ['$scope', '$q', 'Channels',
 	function($scope, $q, Channels) {
 
 		$scope.chooseChannel = function(channel) {
-			$scope.channel = channel;
 			angular.element( document.querySelector( '#now-playing' ) ).html('\
 				<object type="application/x-shockwave-flash" height="540" width="900" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=' + channel['stream']['channel']['name'] + '" bgcolor="#000000">\
 					<param name="allowFullScreen" value="true">\
@@ -42,8 +41,7 @@ app.controller('StreamController', ['$scope', '$q', 'Channels',
 		$scope.channel = function() {
 			$scope.channels.then(function(channels) {
 				var rand = parseInt(Math.random() * channels.length);
-				var channel = channels[rand];
-				$scope.channel = channel;
+				$scope.chooseChannel(channels[rand]);
 			});
 		}();
 
