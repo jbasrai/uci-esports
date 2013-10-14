@@ -30,9 +30,11 @@ app.controller('StreamController', ['$scope', '$q', 'Channels',
 
 		$scope.channels = function() {
 			var channels = $q.defer();
+			$scope.loading = true;
 
 			var response = Channels.query(function() {
 				channels.resolve(response);
+				$scope.loading = false;
 			});
 
 			return channels.promise;

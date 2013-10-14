@@ -20,6 +20,7 @@
 	</div>
 
 	<div id="content" ng-controller="StreamController">
+		<img src="/assets/loader.gif" id="loader" ng-show="loading"/>
 		<div id="now-playing"></div>
 		<ul id="stream-list">
 			<li class="stream-item" ng-repeat="channel in channels | orderBy:'-stream.viewers'" ng-click="chooseChannel(channel)">
