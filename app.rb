@@ -16,7 +16,7 @@ enable :sessions
 DB = Mongo::MongoClient.from_uri('mongodb://gamer:zotzot@ds049288.mongolab.com:49288/uci-esports').db('uci-esports')
 
 get '/register' do
-	redirect 'https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=naswzupwph8vbzwgka4vqrcmbmjs7fu&redirect_uri=http://uci-esports.herokuapp.com/token&scope=user_read'
+	redirect 'https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=naswzupwph8vbzwgka4vqrcmbmjs7fu&redirect_uri=http://uci-esports.herokuapp.com/token'
 end
 
 get '/token' do
@@ -47,7 +47,7 @@ get '/token' do
 	puts DB['channels'].find_one("channel" => username)
 	if !DB['channels'].find_one("channel" => username)
 		puts "INSERTING INTO DATABASE"
-		DB['channels'].insert("channel" => username)
+		DB['channels'].insert({"channel" => username, "date_added" => Time.now})
 	end
 	
 	http.shutdown
@@ -74,6 +74,6 @@ get '/channels' do
 	channels.to_json
 end
 
-get '/' do
+get '/*' do
 	File.read('public/index.html')
 end

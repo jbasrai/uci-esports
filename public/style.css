@@ -94,6 +94,16 @@ body {
 	top:200px;
 }
 
+#no-streams {
+	position:relative;
+	top:200px;
+	text-align:center;
+
+	font-family:'Open Sans';
+	font-weight:300;
+	font-size:48px;
+}
+
 #now-playing {
 	float:left;
 

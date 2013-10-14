@@ -35,6 +35,10 @@ app.controller('StreamController', ['$scope', '$q', 'Channels',
 			var response = Channels.query(function() {
 				channels.resolve(response);
 				$scope.loading = false;
+
+				if(response.length === 0) {
+					$scope.noStreams = true;
+				}
 			});
 
 			return channels.promise;
@@ -42,8 +46,10 @@ app.controller('StreamController', ['$scope', '$q', 'Channels',
 
 		$scope.channel = function() {
 			$scope.channels.then(function(channels) {
-				var rand = parseInt(Math.random() * channels.length);
-				$scope.chooseChannel(channels[rand]);
+				if(channels.length > 0) {
+					var rand = parseInt(Math.random() * channels.length);
+					$scope.chooseChannel(channels[rand]);
+				}
 			});
 		}();
 

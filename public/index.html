@@ -21,10 +21,13 @@
 
 	<div id="content" ng-controller="StreamController">
 		<img src="/assets/loader.gif" id="loader" ng-show="loading"/>
+		<div id="no-streams" ng-show="noStreams">
+			No streams online
+		</div>
 		<div id="now-playing"></div>
 		<ul id="stream-list">
 			<li class="stream-item" ng-repeat="channel in channels | orderBy:'-stream.viewers'" ng-click="chooseChannel(channel)">
-				<img src="{{getGameIcon(channel['stream']['game'])}}" class="game-icon">
+				<img ng-src="getGameIcon(channel['stream']['game'])" class="game-icon">
 				<div class="streamer-name">{{channel['stream']['channel']['display_name']}}</div>
 				<div class="viewer-count">{{channel['stream']['viewers']}}</div>
 			</li>
